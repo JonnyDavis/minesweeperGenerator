@@ -4,8 +4,9 @@ $($ => {
 	let gameBoard = $("#grid");
 	let columns = $("#columns");
 	let rows = $("#rows");
+	let maxMines = 10;
 	let block = $("#block");
-	
+	let numberOfMines = $("#mines").val();
 
 
 
@@ -51,20 +52,34 @@ $($ => {
 	function generateMines() { 
 		
 		let numberOfBoxes = columns.val() * rows.val();
-		
 
-		$(".block").each ((index, el) => {
-			let block = $(el);
+		while (numberOfMines < maxMines) {
+			
+			$(".block").each ((index, el) => {
+				let block = $(el);
 
-			let randomNum = Math.floor(Math.random() * numberOfBoxes + 1) % 2;
-			console.log(randomNum);
+				let randomNum = Math.floor(Math.random() * numberOfBoxes + 1);
+				
+				if(numberOfMines < maxMines) {
+				
+					if (!block.hasClass("mine")) {
+						
+						if (index === randomNum) {
+		         			let mine = $("<text>x</text>");
+							block.addClass("mine");
+		         			mine.appendTo(block);
+		         			numberOfMines += 1;
 
-			if ((index % 3) === randomNum) {
-         		let mine = $("<text>x</text>");
-				mine.addClass("mine");
-         		mine.appendTo(block);
-			}
-		})
+		         			console.log(numberOfMines);
+						}
+
+
+					}
+				}
+
+			})
+		}
+
 	}
 
 
