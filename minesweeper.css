@@ -19,3 +19,23 @@ border-bottom: 1px solid #000;
 .right {
     border-right: 1px solid #000;
 }
+
+.one {
+	color: blue;
+}
+
+.two {
+	color: green;
+}
+
+.three {
+	color: red;
+}
+
+.four {
+	color: purple;
+}
+
+.five {
+	color: orange;
+}
